@@ -1,0 +1,2 @@
+# Arquitectura-WSProyecto
+Java netbeans
