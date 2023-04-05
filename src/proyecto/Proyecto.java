@@ -19,16 +19,10 @@ public class Proyecto {
      * @param args the command line arguments
      */
     
-    
-    public Connection conexion;
+   
     
     public static void main(String[] args) 
     {
-        Conexion con = new Conexion();
-        Connection conexion = con.getConexion();
-
-        int id=3;
-        String nombre="prueba", tel="7712651337", dir="lago chalco";
         
     }
     
