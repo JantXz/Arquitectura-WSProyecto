@@ -4,6 +4,9 @@
  */
 package Formularios;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
 /**
  *
  * @author Ian_l
@@ -13,8 +16,12 @@ public class ClienteInsertar extends javax.swing.JFrame {
     /**
      * Creates new form ClienteInsertar
      */
+    public String nom, tel, dir;
+    public int id;
+    
     public ClienteInsertar() {
         initComponents();
+        
     }
 
     /**
@@ -27,7 +34,15 @@ public class ClienteInsertar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtFieldTel = new javax.swing.JTextField();
+        txtFieldId = new javax.swing.JTextField();
+        txtFieldNom = new javax.swing.JTextField();
+        txtFieldTel1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -38,17 +53,154 @@ public class ClienteInsertar extends javax.swing.JFrame {
         jPanel1.setAutoscrolls(true);
         jPanel1.setLayout(null);
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Agregar Cliente");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(400, 90, 120, 16);
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Dirección");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(150, 600, 230, 40);
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Agregar Cliente");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(350, 50, 410, 210);
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Identificador del cliente");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(150, 300, 230, 40);
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Nombre completo");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(150, 400, 230, 40);
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("Telefono");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(150, 500, 230, 40);
+
+        txtFieldTel.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        txtFieldTel.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldTel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldTel.setText("10 digitos");
+        txtFieldTel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFieldTelMouseClicked(evt);
+            }
+        });
+        txtFieldTel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldTelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtFieldTel);
+        txtFieldTel.setBounds(640, 500, 340, 40);
+
+        txtFieldId.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        txtFieldId.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldId.setText("Identificador (solo numero)");
+        txtFieldId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFieldIdMouseClicked(evt);
+            }
+        });
+        txtFieldId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldIdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtFieldId);
+        txtFieldId.setBounds(640, 300, 340, 40);
+
+        txtFieldNom.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        txtFieldNom.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldNom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldNom.setText("Nombre completo");
+        txtFieldNom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFieldNomMouseClicked(evt);
+            }
+        });
+        txtFieldNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldNomActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtFieldNom);
+        txtFieldNom.setBounds(640, 400, 340, 40);
+
+        txtFieldTel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        txtFieldTel1.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldTel1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldTel1.setText("10 digitos");
+        txtFieldTel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFieldTel1MouseClicked(evt);
+            }
+        });
+        txtFieldTel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldTel1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtFieldTel1);
+        txtFieldTel1.setBounds(640, 600, 340, 40);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1900, 1040);
         jPanel1.getAccessibleContext().setAccessibleName("");
 
-        setBounds(0, 0, 1934, 1087);
+        setBounds(0, 0, 1094, 727);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtFieldTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldTelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldTelActionPerformed
+
+    private void txtFieldTelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldTelMouseClicked
+        
+        if("10 digitos".equals(txtFieldTel.getText())){
+            txtFieldTel.setText("");
+        }
+    }//GEN-LAST:event_txtFieldTelMouseClicked
+
+    private void txtFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldIdActionPerformed
+
+    private void txtFieldIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldIdMouseClicked
+        if("Identificador (solo numero)".equals(txtFieldId.getText())){
+            txtFieldId.setText("");
+        }
+    }//GEN-LAST:event_txtFieldIdMouseClicked
+
+    private void txtFieldNomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldNomMouseClicked
+        if("nombre(s) - apellido(s)".equals(txtFieldNom.getText())){
+            txtFieldNom.setText("");
+        }
+    }//GEN-LAST:event_txtFieldNomMouseClicked
+
+    private void txtFieldNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldNomActionPerformed
+
+    private void txtFieldTel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFieldTel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldTel1MouseClicked
+
+    private void txtFieldTel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldTel1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldTel1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,7 +238,15 @@ public class ClienteInsertar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtFieldId;
+    private javax.swing.JTextField txtFieldNom;
+    private javax.swing.JTextField txtFieldTel;
+    private javax.swing.JTextField txtFieldTel1;
     // End of variables declaration//GEN-END:variables
 }

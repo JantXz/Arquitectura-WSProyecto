@@ -15,20 +15,21 @@ public class Tester {
 	ArrayList<String> renglonObtenido = new ArrayList<String>();
 	String leyenda;
         
+        /*
         //insertar
         leyenda= administradorBD.registrarAlta("tbusuarios", "3, 'Jhon','usuarioJhon',1234");
 	System.out.println(leyenda);
-                
+               
         //modificar
-	leyenda = administradorBD.modificarRegistro("TbUsuarios", "nombre='Juan' , usuario = 'sopenco' ,  psw= '4321'", "id = 11");
+	leyenda = administradorBD.modificarRegistro("cliente", "nombre='Juan' , usuario = 'sopenco' ,  psw= '4321'", "id = 11");
         System.out.println(leyenda);
                 
         //Borrar
-        leyenda = administradorBD.borrarRegistro("TbUsuarios", "id = 3");
+        leyenda = administradorBD.borrarRegistro("cliente", "id = 3");
         System.out.println(leyenda);
 		
         //consulta
-        datosObtenidos = administradorBD.consultarDatos("tbUsuarios", "id , nombre,usuario, psw", "id=5");
+        datosObtenidos = administradorBD.consultarDatos("cliente", "id , nombre,usuario, psw", "id=5");
         System.out.println(leyenda);
 	for(i=0;i<datosObtenidos.size();i++)
         {
@@ -38,6 +39,7 @@ public class Tester {
                 System.out.print(renglonObtenido.get(j) + " ");
             }
             System.out.println();
-        }
+        }*/
+
     }
 }
