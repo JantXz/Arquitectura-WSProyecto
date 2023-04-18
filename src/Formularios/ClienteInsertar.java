@@ -24,6 +24,9 @@ public class ClienteInsertar extends javax.swing.JFrame {
     public ClienteInsertar() {
         initComponents();
         
+        setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -301,6 +304,8 @@ public class ClienteInsertar extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCancelar;

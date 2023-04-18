@@ -4,17 +4,28 @@
  */
 package Formularios;
 
+import Conexion.Conexion;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 /**
  *
  * @author Ian_l
  */
 public class Clientes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Clientes
-     */
+    protected String sqlQuery;
+    protected String table;
+    protected Statement executer;
+    protected ResultSet dataSet;
+    protected Conexion conexion;
+    
+    
     public Clientes() {
         initComponents();
+        
+        setLocationRelativeTo(null);
+        consultar();
     }
 
     /**
@@ -150,6 +161,11 @@ public class Clientes extends javax.swing.JFrame {
                 new Clientes().setVisible(true);
             }
         });
+    }
+    
+    void consultar()
+    {
+        String sql = "Select * from clientes";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
