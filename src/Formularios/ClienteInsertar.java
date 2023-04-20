@@ -273,7 +273,7 @@ public class ClienteInsertar extends javax.swing.JFrame {
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         
         try
-        {
+        {          
             Conexion clientes = new Conexion("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/bdproyecto", "root", "");
             Connection conn = clientes.ObtenerConexion();
 
