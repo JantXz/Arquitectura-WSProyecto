@@ -1,5 +1,6 @@
 package Loginmysql;
 
+import Formularios.Clientes;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
@@ -237,10 +238,10 @@ public class Home extends javax.swing.JFrame {
         );
         PanelContenedorLayout.setVerticalGroup(
             PanelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        PanelPrincipal.add(PanelContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 590, 530));
+        PanelPrincipal.add(PanelContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 590, 600));
 
         Panel_Min.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -326,7 +327,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_DocumentosMouseClicked
 
     private void Button_BusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_BusquedaMouseClicked
-        // TODO add your handling code here:
+        Clientes verClientes = new Clientes();
+        
+        verClientes.setVisible(true);
     }//GEN-LAST:event_Button_BusquedaMouseClicked
 
     private void Button_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_infoMouseClicked
@@ -365,7 +368,7 @@ public class Home extends javax.swing.JFrame {
 
     private void Button_BusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_BusquedaMouseEntered
         jPanel5.setBackground(Color.lightGray);
-        Button_Busqueda.setText("Busqueda");
+        Button_Busqueda.setText("Clientes");
     }//GEN-LAST:event_Button_BusquedaMouseEntered
 
     private void Button_BusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_BusquedaMouseExited

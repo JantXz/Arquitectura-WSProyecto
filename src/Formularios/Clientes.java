@@ -5,8 +5,8 @@
 package Formularios;
 
 import Conexion.Conexion;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,9 +24,49 @@ public class Clientes extends javax.swing.JFrame {
     public Clientes() {
         initComponents();
         
-        setLocationRelativeTo(null);
+        // Obtiene las dimensiones de la pantalla
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+
+        // Calcula la ubicación x e y del JFrame para que esté centrado en la pantalla
+        int x = (int) ((screenSize.getWidth() - getWidth()) / 2);
+        int y = (int) ((screenSize.getHeight() - getHeight()) / 2);
+
+        // Establece la ubicación del JFrame
+        setLocation(570, 109);
+        
         consultar();
     }
+    
+    public void consultar() {
+        try {
+            Conexion clientes = new Conexion("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/bdproyecto", "root", "");
+            Connection conn = clientes.ObtenerConexion();
+            
+            String sqlQuery = "SELECT idCliente, nombre, telefono, direccion FROM cliente";
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+
+            String[] columnas = {"ID", "Nombre", "Teléfono", "Dirección"};
+            DefaultTableModel modeloTabla = new DefaultTableModel(columnas, 0);
+            tblClientes.setModel(modeloTabla);
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("idCliente");
+                String nombre = resultSet.getString("nombre");
+                String telefono = resultSet.getString("telefono");
+                String direccion = resultSet.getString("direccion");
+                Object[] fila = {id, nombre, telefono, direccion};
+                modeloTabla.addRow(fila);
+            }
+
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,14 +77,19 @@ public class Clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        btnEliminar = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
-        btnEliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 255));
         setExtendedState(6);
+        setSize(new java.awt.Dimension(560, 0));
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
 
         btnAgregar.setText("Nuevo Cliente");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,6 +103,39 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
 
+        btnEliminar.setText("Eliminar Cliente");
+
+        btnAtras.setText("Volver Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(btnAtras)
+                .addGap(83, 83, 83)
+                .addComponent(btnEliminar)
+                .addGap(53, 53, 53))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnAtras))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -68,56 +146,29 @@ public class Clientes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblClientes);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
-
-        btnEliminar.setText("Eliminar Cliente");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(btnAgregar)
-                .addGap(26, 26, 26)
-                .addComponent(btnEliminar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -127,6 +178,10 @@ public class Clientes extends javax.swing.JFrame {
         verClienteInsertar.setVisible(true);
         
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,24 +209,24 @@ public class Clientes extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Clientes().setVisible(true);
             }
         });
-    }
-    
-    void consultar()
-    {
-        String sql = "Select * from clientes";
+        
+        
+
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
