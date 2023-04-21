@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Formularios;
+package Vistas;
 
 import Conexion.Conexion;
-import Formularios.Clientes;
+import Vistas.Clientes;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -57,7 +57,7 @@ public class ClienteInsertar extends javax.swing.JFrame {
         txtDir = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        btnEnviar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -199,18 +199,18 @@ public class ClienteInsertar extends javax.swing.JFrame {
         jPanel2.add(jPanel3);
         jPanel3.setBounds(-10, 130, 740, 30);
 
-        btnEnviar.setBackground(new java.awt.Color(246, 246, 246));
-        btnEnviar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnEnviar.setText("Agregar");
-        btnEnviar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(246, 246, 246));
+        btnAgregar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviarActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEnviar);
-        btnEnviar.setBounds(400, 580, 110, 40);
+        jPanel2.add(btnAgregar);
+        btnAgregar.setBounds(400, 580, 110, 40);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(60, 60, 710, 660);
@@ -270,8 +270,8 @@ public class ClienteInsertar extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+
         try
         {          
             Conexion clientes = new Conexion("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/bdproyecto", "root", "");
@@ -292,7 +292,7 @@ public class ClienteInsertar extends javax.swing.JFrame {
         {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_btnEnviarActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,8 +336,8 @@ public class ClienteInsertar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnCancelar;
-    public javax.swing.JButton btnEnviar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -346,9 +346,9 @@ public class ClienteInsertar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField txtDir;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNom;
-    private javax.swing.JTextField txtTel;
+    public javax.swing.JTextField txtDir;
+    public javax.swing.JTextField txtId;
+    public javax.swing.JTextField txtNom;
+    public javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
 package proyecto;
 
 import Conexion.*;
+import Loginmysql.Home;
 import java.sql.*;
 
 
@@ -22,7 +23,8 @@ public class Proyecto {
     
     public static void main(String[] args) 
     {
-        
+        Home iniciar = new Home();
+        iniciar.setVisible(true);
     }
     
 }
