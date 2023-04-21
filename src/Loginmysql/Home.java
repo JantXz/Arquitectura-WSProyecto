@@ -1,5 +1,6 @@
 package Loginmysql;
 
+import Vista.Sistema;
 import Vistas.Clientes;
 import Vistas.Clientes;
 import Vistas.ProductoCRUD;
@@ -74,6 +75,11 @@ public class Home extends javax.swing.JFrame {
         Button_Mi_Info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Button_Mi_Info.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Button_Mi_Info.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Mi_Info.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_Mi_InfoMouseClicked(evt);
+            }
+        });
         BarraLateral.add(Button_Mi_Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -218,6 +224,9 @@ public class Home extends javax.swing.JFrame {
         Button_Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/windows-35.png"))); // NOI18N
         Button_Home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Button_Home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_HomeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 Button_HomeMouseEntered(evt);
             }
@@ -451,6 +460,21 @@ public class Home extends javax.swing.JFrame {
         jPanel7.setBackground(new Color(204,204,255));
         Button_Home.setText("");
     }//GEN-LAST:event_Button_HomeMouseExited
+
+    private void Button_HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_HomeMouseClicked
+        
+        Sistema sistema = new Sistema();
+        sistema.setVisible(true);
+        
+        dispose();
+        
+    }//GEN-LAST:event_Button_HomeMouseClicked
+
+    private void Button_Mi_InfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_Mi_InfoMouseClicked
+        Login iniciar = new Login();
+        iniciar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Button_Mi_InfoMouseClicked
 
    
     public static void main(String args[]) {

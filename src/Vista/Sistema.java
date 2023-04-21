@@ -56,6 +56,7 @@ public final class Sistema extends javax.swing.JFrame {
 
     public Sistema() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     public Sistema (login priv){
         initComponents();
@@ -76,6 +77,7 @@ public final class Sistema extends javax.swing.JFrame {
         }
     }
     public void ListarCliente() {
+        
         List<Cliente> ListarCl = client.ListarCliente();
         modelo = (DefaultTableModel) TableCliente.getModel();
         Object[] ob = new Object[6];
@@ -88,7 +90,6 @@ public final class Sistema extends javax.swing.JFrame {
             modelo.addRow(ob);
         }
         TableCliente.setModel(modelo);
-
     }
 
     public void ListarProveedor() {

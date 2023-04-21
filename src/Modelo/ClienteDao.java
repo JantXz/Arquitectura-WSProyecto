@@ -66,6 +66,7 @@ public class ClienteDao {
        } catch (SQLException e) {
            System.out.println(e.toString());
        }
+       
        return ListaCl;
    }
    

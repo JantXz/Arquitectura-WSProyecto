@@ -40,13 +40,14 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Uno o mas campos estan vacios. Favor de llenarlos.");
         } else {
             try {
+                System.out.println(User + " " + Pass);
                 con1 = Conectar();
-                pst = con1.prepareStatement("select username, pass from usuarios where username='" + User
-                        + "' and pass ='" + Pass + "'");
+                pst = con1.prepareStatement("select username, pass from usuarios where username='" + User + "' and pass ='" + Pass + "'");
                 rs = pst.executeQuery();
                 if (rs.next()) {
                     this.dispose();
-                    new Home().setVisible(true);
+                    Home home = new Home();
+                    home.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "Credenciales incorrectas. Vuelve a intentar de nuevo.");
                 }
