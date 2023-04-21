@@ -1,7 +1,9 @@
 package Loginmysql;
 
-import Formularios.Clientes;
-import Formularios.ProductoCRUD;
+import Vistas.Clientes;
+import Vistas.Clientes;
+import Vistas.ProductoCRUD;
+import Vistas.ProductoCRUD;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
