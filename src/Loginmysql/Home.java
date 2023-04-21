@@ -1,6 +1,7 @@
 package Loginmysql;
 
 import Formularios.Clientes;
+import Formularios.ProductoCRUD;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
@@ -319,7 +320,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_VenderMouseClicked
 
     private void Button_ProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_ProveedorMouseClicked
-        // TODO add your handling code here:
+        ProductoCRUD productos = new ProductoCRUD();
+        
+        productos.setVisible(true);
     }//GEN-LAST:event_Button_ProveedorMouseClicked
 
     private void Button_DocumentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_DocumentosMouseClicked
@@ -348,7 +351,7 @@ public class Home extends javax.swing.JFrame {
 
     private void Button_ProveedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_ProveedorMouseEntered
         jPanel2.setBackground(Color.lightGray);
-        Button_Proveedor.setText("Proveedores");
+        Button_Proveedor.setText("Productos");
     }//GEN-LAST:event_Button_ProveedorMouseEntered
 
     private void Button_ProveedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_ProveedorMouseExited
