@@ -226,13 +226,13 @@ public class Login extends javax.swing.JFrame {
         TITULO.setText("ABARROTES \"CHAYO\"");
         PanelPrincipal.add(TITULO, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 500, 40));
 
-        Panel_Iniciar.setBackground(new java.awt.Color(51, 51, 255));
+        Panel_Iniciar.setBackground(new java.awt.Color(102, 102, 255));
         Panel_Iniciar.setToolTipText("");
         Panel_Iniciar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Button_Login.setBackground(new java.awt.Color(51, 51, 255));
-        Button_Login.setFont(new java.awt.Font("Yu Gothic Light", 0, 18)); // NOI18N
-        Button_Login.setForeground(new java.awt.Color(204, 204, 204));
+        Button_Login.setFont(new java.awt.Font("Yu Gothic Light", 1, 18)); // NOI18N
+        Button_Login.setForeground(new java.awt.Color(51, 51, 51));
         Button_Login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Button_Login.setText("Iniciar sesion");
         Button_Login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
