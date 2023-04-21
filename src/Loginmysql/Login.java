@@ -97,7 +97,7 @@ public class Login extends javax.swing.JFrame {
         PanelPrincipal.setBackground(new java.awt.Color(204, 204, 255));
         PanelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BarraTitulo.setBackground(new java.awt.Color(69, 69, 69));
+        BarraTitulo.setBackground(new java.awt.Color(153, 153, 153));
         BarraTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         B_Close.setBackground(new java.awt.Color(228, 66, 66));
