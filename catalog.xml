@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost/WSCliente/WSClientes.asmx" uri="xml-resources/web-service-references/WSClientes/wsdl/localhost/WSCliente/WSClientes.asmx"/>
+    <system systemId="http://localhost/WSCliente/WSClientes.asmx?op=InsertarCliente" uri="xml-resources/web-service-references/WSClientes_1/wsdl/localhost/WSCliente/WSClientes.asmx.op_insertarcliente"/>
+    <system systemId="http://localhost/WSCliente/WSClientes.asmx" uri="xml-resources/web-service-references/WSClientes_2/wsdl/localhost/WSCliente/WSClientes.asmx"/>
 </catalog>

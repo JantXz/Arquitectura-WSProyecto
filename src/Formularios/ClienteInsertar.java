@@ -265,7 +265,7 @@ public class ClienteInsertar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDirActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+        volver();
         dispose();
         
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -286,8 +286,7 @@ public class ClienteInsertar extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(rootPane, "Insertado", "Estado", HEIGHT);
 
-            cliente.consultar();
-
+            volver();
             dispose();
         } catch (SQLException e) 
         {
@@ -330,7 +329,11 @@ public class ClienteInsertar extends javax.swing.JFrame {
         });
     }
     
-    
+    public void volver(){
+        Clientes verClientes = new Clientes();
+        
+        verClientes.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCancelar;

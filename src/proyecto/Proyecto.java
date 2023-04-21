@@ -5,7 +5,6 @@
 package proyecto;
 
 import Conexion.*;
-import MetodosWeb.*;
 import java.sql.*;
 
 

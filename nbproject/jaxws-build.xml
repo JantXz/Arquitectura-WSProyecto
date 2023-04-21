@@ -19,10 +19,7 @@
     <target name="wsimport-client-WSClientes" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WSClientes"/>
         <property name="wsdl-WSClientes" location="xml-resources/web-service-references/WSClientes/wsdl/localhost/WSCliente/WSClientes.asmx"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WSClientes" destdir="${build.generated.dir}/jax-wsCache/WSClientes" wsdl="${wsdl-WSClientes}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost/WSCliente/WSClientes.asmx" xnocompile="true" xendorsed="true" package="Conexion">
-            <depends file="${wsdl-WSClientes}"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/WSClientes"/>
-        </wsimport>
+        
         <copy todir="${build.generated.sources.dir}/jax-ws">
             <fileset dir="${build.generated.dir}/jax-wsCache/WSClientes">
                 <include name="**/*.java"/>
@@ -33,5 +30,33 @@
         <delete dir="${build.generated.dir}/jax-wsCache/WSClientes"/>
         <delete dir="${build.generated.sources.dir}/jax-ws/Conexion"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-WSClientes"/>
+    <target name="wsimport-client-WSClientes_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WSClientes_1"/>
+        <property name="wsdl-WSClientes_1" location="xml-resources/web-service-references/WSClientes_1/wsdl/localhost/WSCliente/WSClientes.asmx.op_insertarcliente"/>
+       
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WSClientes_1">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WSClientes_1" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/WSClientes_1"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/"/>
+    </target>
+    <target name="wsimport-client-WSClientes_2" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WSClientes_2"/>
+        <property name="wsdl-WSClientes_2" location="xml-resources/web-service-references/WSClientes_2/wsdl/localhost/WSCliente/WSClientes.asmx"/>
+        
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WSClientes_2">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WSClientes_2" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/WSClientes_2"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-WSClientes, wsimport-client-WSClientes_1, wsimport-client-WSClientes_2"/>
 </project>

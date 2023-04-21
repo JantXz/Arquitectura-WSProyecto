@@ -6,7 +6,9 @@ package Formularios;
 
 import Conexion.Conexion;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -104,6 +106,11 @@ public class Clientes extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar Cliente");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnAtras.setText("Volver Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -177,12 +184,46 @@ public class Clientes extends javax.swing.JFrame {
         ClienteInsertar verClienteInsertar = new ClienteInsertar();
         
         verClienteInsertar.setVisible(true);
-        
+        dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
+    
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int rowIndex = tblClientes.getSelectedRow();
+        if (rowIndex == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecciona una fila para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int confirm = JOptionPane.showConfirmDialog(rootPane, "¿Estás seguro de que quieres eliminar esta fila?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+        TableModel model = tblClientes.getModel();
+        String id = model.getValueAt(rowIndex, 0).toString();
+        
+        
+        try {          
+            Conexion clientes = new Conexion("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/bdproyecto", "root", "");
+            Connection conn = clientes.ObtenerConexion();
+
+            String sql = "DELETE FROM cliente WHERE idCliente = "+ id;
+            Statement stmt = conn.createStatement();
+            int rowsAffected = stmt.executeUpdate(sql);
+
+            stmt.close();
+            conn.close();
+
+            JOptionPane.showMessageDialog(rootPane, "Eliminado", "Estado", HEIGHT);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }       
+
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
