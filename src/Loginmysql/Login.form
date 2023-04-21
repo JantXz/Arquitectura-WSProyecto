@@ -34,7 +34,7 @@
     <Container class="javax.swing.JPanel" name="PanelPrincipal">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+          <Color blue="ff" green="99" red="99" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -50,7 +50,7 @@
         <Container class="javax.swing.JPanel" name="BarraTitulo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
+              <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
