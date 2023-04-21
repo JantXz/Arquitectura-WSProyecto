@@ -20,11 +20,15 @@ import Modelo.Venta;
 import Modelo.VentaDao;
 import Modelo.login;
 import Reportes.Grafico;
+import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +37,7 @@ import javax.swing.table.DefaultTableModel;
  * @author USUARIO
  */
 public final class Sistema extends javax.swing.JFrame {
+    
     Date fechaVenta = new Date();
     String fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(fechaVenta);
     Cliente cl = new Cliente();
@@ -52,12 +57,43 @@ public final class Sistema extends javax.swing.JFrame {
     DefaultTableModel tmp = new DefaultTableModel();
     int item;
     double Totalpagar = 0.00;
-    
+     // Nuevos atributos
+    private String[] metodosPago = {"Tarjeta de crédito", "Tarjeta de débito", "Efectivo"};
+    private JComboBox<String> metodoPagoBox;
+    private JLabel metodoPagoLabel;
 
     public Sistema() {
         initComponents();
     }
     public Sistema (login priv){
+                super("Sistema de Venta");
+
+        // Crear el menú desplegable de métodos de pago
+        String[] metodosPago = {"Tarjeta de crédito", "Tarjeta de débito", "Efectivo"};
+        metodoPagoBox = new JComboBox<>(metodosPago);
+
+        // Crear la etiqueta del menú desplegable
+        metodoPagoLabel = new JLabel("Seleccione un método de pago:");
+
+        // Configurar el layout de la ventana
+        setLayout(new GridLayout(2, 1));
+
+        // Agregar la etiqueta y el menú desplegable a la ventana
+        add(metodoPagoLabel);
+        add(metodoPagoBox);
+
+        // Configurar las propiedades de la ventana
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 150);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        if (priv.getRol().equals("Asistente")) {
+            btnProductos.setEnabled(false);
+            btnProveedor.setEnabled(false);
+            LabelVendedor.setText(priv.getNombre());
+        }else{
+            LabelVendedor.setText(priv.getNombre());
+        }
         initComponents();
         this.setLocationRelativeTo(null);
         Midate.setDate(fechaVenta);
@@ -67,13 +103,7 @@ public final class Sistema extends javax.swing.JFrame {
         txtIdproducto.setVisible(false);
         txtIdProveedor.setVisible(false);
         txtIdCV.setVisible(false);
-        if (priv.getRol().equals("Asistente")) {
-            btnProductos.setEnabled(false);
-            btnProveedor.setEnabled(false);
-            LabelVendedor.setText(priv.getNombre());
-        }else{
-            LabelVendedor.setText(priv.getNombre());
-        }
+
     }
     public void ListarCliente() {
         List<Cliente> ListarCl = client.ListarCliente();
@@ -207,6 +237,8 @@ public final class Sistema extends javax.swing.JFrame {
         btnGraficar = new javax.swing.JButton();
         Midate = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TableCliente = new javax.swing.JTable();
@@ -547,12 +579,12 @@ public final class Sistema extends javax.swing.JFrame {
         });
         jPanel2.add(btnGenerarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 373, -1, 45));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/money.png"))); // NOI18N
-        jLabel10.setText("Total a Pagar:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 377, -1, -1));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/1622834_cards_credit_method_pay_payment_icon (1).png"))); // NOI18N
+        jLabel10.setText("Metodo de Pago:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 160, 50));
 
         LabelTotal.setText("-----");
-        jPanel2.add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 381, -1, -1));
+        jPanel2.add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, -1, -1));
         jPanel2.add(txtIdCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 375, -1, -1));
         jPanel2.add(txtIdPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(678, 126, -1, -1));
 
@@ -567,6 +599,18 @@ public final class Sistema extends javax.swing.JFrame {
 
         jLabel11.setText("Seleccionar:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/money.png"))); // NOI18N
+        jLabel21.setText("Total a Pagar:");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarjeta de Credito", "Tarjeta de Debito", "Efectivo", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, -1, -1));
 
         jTabbedPane1.addTab("1", jPanel2);
 
@@ -1717,10 +1761,22 @@ public final class Sistema extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCodigoVentaKeyPressed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+
+        // Acciones a realizar al seleccionar un elemento del menú desplegable
+
+    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+         Sistema sistema = new Sistema();
+        sistema.setVisible(true);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1788,6 +1844,7 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JComboBox<Object> cbxProveedorPro;
     private javax.swing.JComboBox<String> cbxRol;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1799,6 +1856,7 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
